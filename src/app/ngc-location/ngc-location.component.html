@@ -1,0 +1,48 @@
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title">Location</h5>
+    <form (ngSubmit)="applyLocation()" [formGroup]="locationForm" class="card-text">
+      <div class="row">
+        <div class="col-2 form-group">
+          <label for="longitudeInput">Longitude</label>
+          <input class="form-control" formControlName="longitudeControl"
+                 id="longitudeInput"
+                 max="180" min="-180" name="longitudeControl" required step="0.1" type="number">
+          <small class="form-text text-muted">Longitude in decimal degrees. Negative number is west, positive
+            east.</small>
+
+          <div
+            *ngIf="longitudeControl?.valid"
+            class="invalid-feedback">
+            Must be set and be between -90.0 and +90.0
+          </div>
+        </div>
+
+        <div class="col-2 form-group">
+          <label for="latitudeInput">Latitude</label>
+          <input class="form-control" formControlName="latitudeControl"
+                 id="latitudeInput"
+                 max="90" min="-90" name="latitudeControl" required step="0.1" type="number">
+          <small class="form-text text-muted">Latitude in decimal degrees. Negative number is south, positive
+            north.</small>
+        </div>
+
+        <div class="col-8 form-group">
+          <label for="dateInput">Date</label>
+          <div class="input-group">
+            <input #d="ngbDatepicker"
+                   class="form-control" formControlName="dateControl"
+                   id="dateInput" name="datePicker" ngbDatepicker placeholder="yyyy-mm-dd" required>
+            <div class="input-group-append">
+              <button (click)="d.toggle()" class="btn btn-outline-secondary bi-calendar" type="button"></button>
+            </div>
+          </div>
+
+          <label for="timeInput">Time</label>
+          <ngb-timepicker [seconds]="true" formControlName="timeControl" id="timeInput"></ngb-timepicker>
+        </div>
+      </div>
+      <button class="btn btn-primary" name="submit">Apply</button>
+    </form>
+  </div>
+</div>

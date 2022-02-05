@@ -1,0 +1,76 @@
+<p>
+  <button (click)="collapse.toggle()"
+          class="btn btn-outline-primary"
+          type="button">
+    Filter
+  </button>
+</p>
+
+<div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed" class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title">Filter Catalog</h5>
+    <form (ngSubmit)="applyFilter()" [formGroup]="filterForm" class="card-text">
+      <div class="row">
+        <fieldset class="col">
+          <legend class="h6">Messier</legend>
+          <div class="form-group">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" formControlName="messierControl" id="filterSettingMessierIgnore"
+                     name="messierControl"
+                     type="radio" value="">
+              <label class="form-check-label" for="filterSettingMessierIgnore">Any</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" formControlName="messierControl" id="filterSettingMessierYes"
+                     name="messierControl"
+                     type="radio" value="true">
+              <label class="form-check-label" for="filterSettingMessierYes">Yes</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" formControlName="messierControl" id="filterSettingMessierNo"
+                     name="messierControl"
+                     type="radio"
+                     value="false">
+              <label class="form-check-label" for="filterSettingMessierIgnore">No</label>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset class="col">
+          <legend class="h6">Catalog</legend>
+          <div class="form-group">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" formControlName="catalogControl" id="filterSettingsCatalogBoth"
+                     name="catalogControl"
+                     type="radio" value="">
+              <label class="form-check-label" for="filterSettingsCatalogBoth">Both</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" formControlName="catalogControl" id="filterSettingsCatalogNgc"
+                     name="catalogControl"
+                     type="radio" value="ngc">
+              <label class="form-check-label" for="filterSettingsCatalogNgc">NGC</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" formControlName="catalogControl" id="filterSettingsCatalogIc"
+                     name="catalogControl"
+                     type="radio"
+                     value="ic">
+              <label class="form-check-label" for="filterSettingsCatalogIc">IC</label>
+            </div>
+          </div>
+        </fieldset>
+        <div class="form-group col">
+          <label for="filterSettingsConstellations">Only show objects in these constellations</label>
+          <select class="form-control" formControlName="constellationsControl" id="filterSettingsConstellations"
+                  multiple>
+            <option [ngValue]="">-- Any --</option>
+            <option *ngFor="let constellation of constellations"
+                    [ngValue]="constellation.abbrev">{{ constellation.fullname }}</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn btn-primary" name="submit">Apply</button>
+    </form>
+  </div>
+</div>
+

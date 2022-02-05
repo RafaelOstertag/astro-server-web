@@ -1,0 +1,12 @@
+<div *ngIf="ngcEntry" class="row">
+  <h5 class="col">{{ ngcEntry.name }} <span *ngIf="ngcEntry.messier"
+                                            class="badge badge-primary">M{{ ngcEntry.messier }}</span></h5>
+  <div class="col text-muted">{{ ngcEntry.type.description }}</div>
+  <div class="col text-muted">
+    <span *ngIf="ngcEntry.constellation?.fullname">{{ngcEntry.constellation?.fullname || ""}}</span>
+  </div>
+  <div class="col text-muted">
+    <span *ngIf="ngcEntry.commonNames">({{ngcEntry.commonNames?.join(', ')}})</span>
+  </div>
+
+</div>

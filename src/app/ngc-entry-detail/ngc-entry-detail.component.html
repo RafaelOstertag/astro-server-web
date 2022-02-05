@@ -1,0 +1,38 @@
+<div *ngIf="ngcEntry" class="row">
+  <div class="col">
+    Right Ascension: {{ ngcEntry.equatorialCoordinates?.ra ?? "n/a" }}
+  </div>
+  <div class="col">
+    Declination:  {{ ngcEntry.equatorialCoordinates?.dec ?? "n/a" }}
+  </div>
+  <div *ngIf="ngcEntry.majorAxis" class="col">
+    Major Axis: {{ ngcEntry.majorAxis }}
+  </div>
+  <div *ngIf="ngcEntry.minorAxis" class="col">
+    Minor Axis: {{ ngcEntry.minorAxis }}
+  </div>
+  <div *ngIf="ngcEntry.positionAngle" class="col">
+    Position Angle: {{ ngcEntry.positionAngle }}
+  </div>
+</div>
+<div *ngIf="ngcEntry" class="row">
+  <div *ngIf="ngcEntry.bMag" class="col">
+    B-Mag: {{ ngcEntry.bMag }}
+  </div>
+
+  <div *ngIf="ngcEntry.vMag" class="col">
+    V-Mag: {{ ngcEntry.vMag }}
+  </div>
+
+  <div *ngIf="ngcEntry.jMag" class="col">
+    J-Mag: {{ ngcEntry.jMag }}
+  </div>
+
+  <div *ngIf="ngcEntry.hMag" class="col">
+    H-Mag: {{ ngcEntry.hMag }}
+  </div>
+
+  <div *ngIf="ngcEntry.kMag" class="col">
+    K-Mag: {{ ngcEntry.kMag }}
+  </div>
+</div>
