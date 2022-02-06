@@ -48,7 +48,15 @@ pipeline {
 
       steps {
         withCredentials([usernameColonPassword(credentialsId: 'de85340b-c857-49e3-9983-fc959df25943', variable: 'CREDENTIALS')]) {
-          sh 'curl -f -k -u "$CREDENTIALS" -I funnel-frontend-${VERSION}.tar.gz "${NEXUS}${REPOSITORY}/${VERSION}/astro-server-web-${VERSION}.tar.gz" >/dev/null && { echo "### Version ${VERSION} already exists in repository" >&2 ; exit 1 ; }'
+          sh '''
+if curl -f -k -u "$CREDENTIALS" -I funnel-frontend-${VERSION}.tar.gz "${NEXUS}${REPOSITORY}/${VERSION}/astro-server-web-${VERSION}.tar.gz" >/dev/null
+then
+  echo "### Version ${VERSION} already exists in repository" >&2
+  exit 1
+else
+  echo "Version ${VERSION} not found in repository. Good!"
+fi
+'''
         }
       }
     }
