@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 import {NGCEntryWithHorizontalCoordinates} from "@astro-npm/astro-server-angular";
 
 @Component({
-  selector: 'app-ngc-entry-extended',
+  selector: 'app-ngc-entry-alt-az',
   templateUrl: './ngc-entry-alt-az.component.html',
   styleUrls: ['./ngc-entry-alt-az.component.css']
 })

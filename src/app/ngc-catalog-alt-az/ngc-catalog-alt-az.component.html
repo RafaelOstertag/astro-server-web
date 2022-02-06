@@ -7,8 +7,8 @@
     <h1>Catalog Entries</h1>
   </header>
   <main>
-    <app-ngc-entry-extended *ngFor="let entryWithHorizontalCoordinates of catalogEntries"
-                            [ngcEntryWithHorizontalCoordinates]="entryWithHorizontalCoordinates"></app-ngc-entry-extended>
+    <app-ngc-entry-alt-az *ngFor="let entryWithHorizontalCoordinates of catalogEntries"
+                          [ngcEntryWithHorizontalCoordinates]="entryWithHorizontalCoordinates"></app-ngc-entry-alt-az>
   </main>
   <ngb-pagination (pageChange)="changePage($event)" *ngIf="catalogEntries.length > 0"
                   [boundaryLinks]="true"

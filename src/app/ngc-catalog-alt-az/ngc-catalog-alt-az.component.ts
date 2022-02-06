@@ -12,7 +12,7 @@ import {ApiHeaders} from "../api-headers";
 import {formatDate} from "@angular/common";
 
 @Component({
-  selector: 'app-ngc-catalog-extended',
+  selector: 'app-ngc-catalog-alt-az',
   templateUrl: './ngc-catalog-alt-az.component.html',
   styleUrls: ['./ngc-catalog-alt-az.component.css']
 })

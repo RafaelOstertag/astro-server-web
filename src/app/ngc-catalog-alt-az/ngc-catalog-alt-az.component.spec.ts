@@ -2,7 +2,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {NgcCatalogAltAzComponent} from './ngc-catalog-alt-az.component';
 
-describe('NgcCatalogExtendedComponent', () => {
+describe('NgcCatalogAltAzComponent', () => {
   let component: NgcCatalogAltAzComponent;
   let fixture: ComponentFixture<NgcCatalogAltAzComponent>;
 
