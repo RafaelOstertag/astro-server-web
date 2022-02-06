@@ -13,10 +13,10 @@ import {formatDate} from "@angular/common";
 
 @Component({
   selector: 'app-ngc-catalog-extended',
-  templateUrl: './ngc-catalog-extended.component.html',
-  styleUrls: ['./ngc-catalog-extended.component.css']
+  templateUrl: './ngc-catalog-alt-az.component.html',
+  styleUrls: ['./ngc-catalog-alt-az.component.css']
 })
-export class NgcCatalogExtendedComponent {
+export class NgcCatalogAltAzComponent {
   catalogEntries: Array<NGCEntryWithHorizontalCoordinates> = []
   state: CatalogListState = CatalogListState.OK
   currentListFilter: ListFilter = new ListFilter()
@@ -85,7 +85,7 @@ export class NgcCatalogExtendedComponent {
     const requestParameters: ListObjectsExtendedRequestParams = {
       longitude: this.currentLocation!.longitude,
       latitude: this.currentLocation!.latitude,
-      localTime: NgcCatalogExtendedComponent.format(this.currentLocation!.time),
+      localTime: NgcCatalogAltAzComponent.format(this.currentLocation!.time),
       pageSize: this.pageSize,
       pageIndex: this.pageNumber > 1 ? this.pageNumber - 1 : 0,
     }

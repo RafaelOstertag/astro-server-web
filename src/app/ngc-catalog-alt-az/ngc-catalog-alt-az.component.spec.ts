@@ -1,20 +1,20 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {NgcCatalogExtendedComponent} from './ngc-catalog-extended.component';
+import {NgcCatalogAltAzComponent} from './ngc-catalog-alt-az.component';
 
 describe('NgcCatalogExtendedComponent', () => {
-  let component: NgcCatalogExtendedComponent;
-  let fixture: ComponentFixture<NgcCatalogExtendedComponent>;
+  let component: NgcCatalogAltAzComponent;
+  let fixture: ComponentFixture<NgcCatalogAltAzComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [NgcCatalogExtendedComponent]
+      declarations: [NgcCatalogAltAzComponent]
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NgcCatalogExtendedComponent);
+    fixture = TestBed.createComponent(NgcCatalogAltAzComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

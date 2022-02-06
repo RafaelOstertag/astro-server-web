@@ -1,20 +1,20 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {NgcEntryExtendedComponent} from './ngc-entry-extended.component';
+import {NgcEntryAltAzComponent} from './ngc-entry-alt-az.component';
 
-describe('NgcEntryExtendedComponent', () => {
-  let component: NgcEntryExtendedComponent;
-  let fixture: ComponentFixture<NgcEntryExtendedComponent>;
+describe('NgcEntryAltAzComponent', () => {
+  let component: NgcEntryAltAzComponent;
+  let fixture: ComponentFixture<NgcEntryAltAzComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [NgcEntryExtendedComponent]
+      declarations: [NgcEntryAltAzComponent]
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NgcEntryExtendedComponent);
+    fixture = TestBed.createComponent(NgcEntryAltAzComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

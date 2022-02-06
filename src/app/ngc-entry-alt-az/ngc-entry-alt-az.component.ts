@@ -3,10 +3,10 @@ import {NGCEntryWithHorizontalCoordinates} from "@astro-npm/astro-server-angular
 
 @Component({
   selector: 'app-ngc-entry-extended',
-  templateUrl: './ngc-entry-extended.component.html',
-  styleUrls: ['./ngc-entry-extended.component.css']
+  templateUrl: './ngc-entry-alt-az.component.html',
+  styleUrls: ['./ngc-entry-alt-az.component.css']
 })
-export class NgcEntryExtendedComponent {
+export class NgcEntryAltAzComponent {
   @Input() ngcEntryWithHorizontalCoordinates?: NGCEntryWithHorizontalCoordinates
   isCollapsed: boolean = true
 
