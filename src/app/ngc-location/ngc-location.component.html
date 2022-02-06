@@ -27,7 +27,7 @@
             north.</small>
         </div>
 
-        <div class="col-8 form-group">
+        <div class="col-3 form-group">
           <label for="dateInput">Date</label>
           <div class="input-group">
             <input #d="ngbDatepicker"
@@ -37,7 +37,8 @@
               <button (click)="d.toggle()" class="btn btn-outline-secondary bi-calendar" type="button"></button>
             </div>
           </div>
-
+        </div>
+        <div class="col-5 form-group">
           <label for="timeInput">Time</label>
           <ngb-timepicker [seconds]="true" formControlName="timeControl" id="timeInput"></ngb-timepicker>
         </div>
