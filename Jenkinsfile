@@ -6,7 +6,7 @@ pipeline {
   environment {
     // Used for tests, to make Jest running all tests without watcher
     NEXUS = "https://colossus.kruemel.home/nexus/"
-    REPOSITORY = "repository/astro-server-web-raw/astro-server-web/"
+    REPOSITORY = "repository/astro-server-web-raw"
     VERSION = sh returnStdout: true, script: 'jq -r .version package.json | tr -d \'\\n\''
   }
 
@@ -25,7 +25,10 @@ pipeline {
   stages {
     stage('install packages') {
       steps {
-        sh 'npm install'
+        configFileProvider([configFile(fileId: 'e5293454-b063-4d53-be2d-ecb485e4f660', targetLocation: '.npmrc')]) {
+          sh 'cat .npmrc'
+          sh 'npm install'
+        }
       }
     }
 
@@ -66,10 +69,10 @@ pipeline {
         }
 
         script {
-          def version = env.BRANCH_NAME - 'release/v'
+          def version = env.VERSION
           step([$class                 : "RundeckNotifier",
                 includeRundeckLogs     : true,
-                jobId                  : "73f61ea8-6c26-4226-b3d8-c566d0c0da67",
+                jobId                  : "f32a7d62-b42e-4fbb-83df-ccd51c98f810",
                 options                : "version=$version",
                 rundeckInstance        : "gizmo",
                 shouldFailTheBuild     : true,

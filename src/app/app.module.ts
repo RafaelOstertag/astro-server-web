@@ -6,7 +6,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {NgcCatalogComponent} from './ngc-catalog/ngc-catalog.component';
 import {HttpClientModule} from "@angular/common/http";
-import {AstroServerApiModule} from '@astro-npm/astro-server-angular';
+import {AstroServerApiModule, BASE_PATH} from '@astro-npm/astro-server-angular';
 import {NgcEntryDetailComponent} from './ngc-entry-detail/ngc-entry-detail.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgcFilterSettingsComponent} from './ngc-filter-settings/ngc-filter-settings.component';
@@ -16,6 +16,7 @@ import {NgcEntryComponent} from './ngc-entry/ngc-entry.component';
 import {NgcHorizontalCoordinatesComponent} from './ngc-horizontal-coordinates/ngc-horizontal-coordinates.component';
 import {NgcEntryTitleComponent} from './ngc-entry-title/ngc-entry-title.component';
 import {NgcEntryExtendedComponent} from './ngc-entry-extended/ngc-entry-extended.component';
+import {environment} from "../environments/environment";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import {NgcEntryExtendedComponent} from './ngc-entry-extended/ngc-entry-extended
     NgbModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [{provide: BASE_PATH, useValue: environment.serverUrl}],
   bootstrap: [AppComponent]
 })
 export class AppModule {
