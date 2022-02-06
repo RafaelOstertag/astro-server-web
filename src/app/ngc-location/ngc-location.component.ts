@@ -68,7 +68,7 @@ export class NgcLocationComponent {
     return {
       year: date.getFullYear(),
       month: date.getMonth() + 1,
-      day: date.getDay()
+      day: date.getDate()
     }
   }
 

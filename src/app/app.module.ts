@@ -10,12 +10,12 @@ import {AstroServerApiModule, BASE_PATH} from '@astro-npm/astro-server-angular';
 import {NgcEntryDetailComponent} from './ngc-entry-detail/ngc-entry-detail.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgcFilterSettingsComponent} from './ngc-filter-settings/ngc-filter-settings.component';
-import {NgcCatalogExtendedComponent} from './ngc-catalog-extended/ngc-catalog-extended.component';
+import {NgcCatalogAltAzComponent} from './ngc-catalog-alt-az/ngc-catalog-alt-az.component';
 import {NgcLocationComponent} from './ngc-location/ngc-location.component';
 import {NgcEntryComponent} from './ngc-entry/ngc-entry.component';
 import {NgcHorizontalCoordinatesComponent} from './ngc-horizontal-coordinates/ngc-horizontal-coordinates.component';
 import {NgcEntryTitleComponent} from './ngc-entry-title/ngc-entry-title.component';
-import {NgcEntryExtendedComponent} from './ngc-entry-extended/ngc-entry-extended.component';
+import {NgcEntryAltAzComponent} from './ngc-entry-alt-az/ngc-entry-alt-az.component';
 import {environment} from "../environments/environment";
 
 @NgModule({
@@ -24,12 +24,12 @@ import {environment} from "../environments/environment";
     NgcCatalogComponent,
     NgcEntryDetailComponent,
     NgcFilterSettingsComponent,
-    NgcCatalogExtendedComponent,
+    NgcCatalogAltAzComponent,
     NgcLocationComponent,
     NgcEntryComponent,
     NgcHorizontalCoordinatesComponent,
     NgcEntryTitleComponent,
-    NgcEntryExtendedComponent
+    NgcEntryAltAzComponent
   ],
   imports: [
     BrowserModule,
