@@ -26,7 +26,6 @@ pipeline {
     stage('install packages') {
       steps {
         configFileProvider([configFile(fileId: 'e5293454-b063-4d53-be2d-ecb485e4f660', targetLocation: '.npmrc')]) {
-          sh 'cat .npmrc'
           sh 'npm install'
         }
       }
