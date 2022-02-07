@@ -8,6 +8,7 @@ import {NGCEntry} from "@astro-npm/astro-server-angular";
 })
 export class NgcEntryTitleComponent {
   @Input() ngcEntry?: NGCEntry
+  @Input() isExpanded: boolean = false
 
   constructor() {
     // intentionally empty
