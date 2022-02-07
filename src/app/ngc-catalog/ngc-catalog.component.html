@@ -1,27 +1,33 @@
-<app-ngc-filter-settings (filterSettingsEvent)="applyFilters($event)"></app-ngc-filter-settings>
-
-<article *ngIf="state === 0">
+<article class="mt-1">
   <header>
-    <h1>Catalog Entries</h1>
+    <h2>NGC Catalog</h2>
   </header>
-  <main>
+
+  <aside>
+    <app-ngc-filter-settings (filterSettingsEvent)="applyFilters($event)"></app-ngc-filter-settings>
+  </aside>
+  <main *ngIf="state === 0" class="mt-4">
     <app-ngc-entry *ngFor="let entry of catalogEntries" [ngcEntry]="entry"></app-ngc-entry>
+
+    <nav>
+      <ngb-pagination (pageChange)="changePage($event)"
+                      [boundaryLinks]="true"
+                      [collectionSize]="(totalPages * pageSize)"
+                      [maxSize]="5"
+                      [pageSize]="pageSize"
+                      [page]="pageNumber" class="d-flex justify-content-center mt-1"></ngb-pagination>
+    </nav>
   </main>
-  <ngb-pagination (pageChange)="changePage($event)"
-                  [boundaryLinks]="true"
-                  [collectionSize]="(totalPages * pageSize)"
-                  [maxSize]="5"
-                  [pageSize]="pageSize"
-                  [page]="pageNumber" class="d-flex justify-content-center mt-1"></ngb-pagination>
+  <div *ngIf="state === 1" class="jumbotron">
+    <h1>No Entries Found</h1>
+    <p>Your filter settings did not yield a result.</p>
+  </div>
+
+  <div *ngIf="state === 2" class="jumbotron">
+    <h1>Something went wrong</h1>
+    <p>Check back later.</p>
+  </div>
 </article>
 
-<div *ngIf="state === 1" class="jumbotron">
-  <h1>No Entries Found</h1>
-  <p>Your filter settings did not yield a result.</p>
-</div>
 
-<div *ngIf="state === 2" class="jumbotron">
-  <h1>Something went wrong</h1>
-  <p>Check back later.</p>
-</div>
 

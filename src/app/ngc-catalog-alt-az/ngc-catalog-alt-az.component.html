@@ -1,35 +1,42 @@
-<app-ngc-location (locationSettingsEvent)="applyLocation($event)"></app-ngc-location>
-
-<app-ngc-filter-settings (filterSettingsEvent)="applyFilters($event)"></app-ngc-filter-settings>
-
-<article *ngIf="state === 0 && catalogEntries.length > 0">
+<article class="mt-1">
   <header>
-    <h1>Catalog Entries</h1>
+    <h2>Catalog Entries</h2>
   </header>
-  <main>
+
+  <aside>
+    <app-ngc-location (locationSettingsEvent)="applyLocation($event)"></app-ngc-location>
+
+    <app-ngc-filter-settings (filterSettingsEvent)="applyFilters($event)"></app-ngc-filter-settings>
+  </aside>
+
+  <main *ngIf="state === 0 && catalogEntries.length > 0" class="mt-4">
     <app-ngc-entry-alt-az *ngFor="let entryWithHorizontalCoordinates of catalogEntries"
                           [ngcEntryWithHorizontalCoordinates]="entryWithHorizontalCoordinates"></app-ngc-entry-alt-az>
+    <nav>
+      <ngb-pagination (pageChange)="changePage($event)" *ngIf="catalogEntries.length > 0"
+                      [boundaryLinks]="true"
+                      [collectionSize]="(totalPages * pageSize)"
+                      [maxSize]="5"
+                      [pageSize]="pageSize"
+                      [page]="pageNumber" class="d-flex justify-content-center mt-1"></ngb-pagination>
+    </nav>
   </main>
-  <ngb-pagination (pageChange)="changePage($event)" *ngIf="catalogEntries.length > 0"
-                  [boundaryLinks]="true"
-                  [collectionSize]="(totalPages * pageSize)"
-                  [maxSize]="5"
-                  [pageSize]="pageSize"
-                  [page]="pageNumber" class="d-flex justify-content-center mt-1"></ngb-pagination>
+
+  <div *ngIf="state ===0 && catalogEntries.length === 0" class="jumbotron">
+    <h1>Set Location</h1>
+    <p>Please set the location above.</p>
+  </div>
+
+
+  <div *ngIf="state === 1" class="jumbotron">
+    <h1>No Entries Found</h1>
+    <p>Your filter settings did not yield a result.</p>
+  </div>
+
+  <div *ngIf="state === 2" class="jumbotron">
+    <h1>Something went wrong</h1>
+    <p>Check back later.</p>
+  </div>
+
 </article>
 
-<div *ngIf="state ===0 && catalogEntries.length === 0" class="jumbotron">
-  <h1>Set Location</h1>
-  <p>Please set the location above.</p>
-</div>
-
-
-<div *ngIf="state === 1" class="jumbotron">
-  <h1>No Entries Found</h1>
-  <p>Your filter settings did not yield a result.</p>
-</div>
-
-<div *ngIf="state === 2" class="jumbotron">
-  <h1>Something went wrong</h1>
-  <p>Check back later.</p>
-</div>
