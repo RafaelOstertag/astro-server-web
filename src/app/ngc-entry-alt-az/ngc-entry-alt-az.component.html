@@ -1,4 +1,4 @@
-<section (click)="collapse.toggle()" *ngIf="ngcEntryWithHorizontalCoordinates">
+<section (click)="collapse.toggle()" *ngIf="ngcEntryWithHorizontalCoordinates" class="expandable">
   <app-ngc-entry-title [ngcEntry]="ngcEntryWithHorizontalCoordinates.entry"></app-ngc-entry-title>
   <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed" class="pb-2">
     <app-ngc-horizontal-coordinates
