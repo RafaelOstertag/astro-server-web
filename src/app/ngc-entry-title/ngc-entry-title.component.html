@@ -3,6 +3,7 @@
     <i *ngIf="isExpanded" class="bi-chevron-compact-down"></i>
     {{ ngcEntry.name }} <span *ngIf="ngcEntry.messier"
                               class="badge badge-primary">M{{ ngcEntry.messier }}</span>
+    <span *ngIf="!isObjectVisible" class="badge badge-warning"><i class="bi-arrow-down-circle"></i></span>
   </h5>
   <div class="col text-muted">{{ ngcEntry.type.description }}</div>
   <div class="col text-muted">
