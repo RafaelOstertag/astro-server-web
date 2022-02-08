@@ -8,14 +8,21 @@
           <input class="form-control" formControlName="longitudeControl"
                  id="longitudeInput"
                  max="180" min="-180" name="longitudeControl" required step="0.1" type="number">
+          <div *ngIf="longitudeControl?.invalid" class="text-danger mb-2">
+            <small *ngIf="longitudeControl?.errors?.['required']">
+              Longitude must be set.
+            </small>
+
+            <small *ngIf="longitudeControl?.errors?.['min']">
+              Longitude must be greater than -180.0.
+            </small>
+
+            <small *ngIf="longitudeControl?.errors?.['max']">
+              Longitude must be smaller than 180.0.
+            </small>
+          </div>
           <small class="form-text text-muted">Longitude in decimal degrees. Negative number is west, positive
             east.</small>
-
-          <div
-            *ngIf="longitudeControl?.valid"
-            class="invalid-feedback">
-            Must be set and be between -90.0 and +90.0
-          </div>
         </div>
 
         <div class="col-2 form-group">
@@ -23,6 +30,19 @@
           <input class="form-control" formControlName="latitudeControl"
                  id="latitudeInput"
                  max="90" min="-90" name="latitudeControl" required step="0.1" type="number">
+          <div *ngIf="latitudeControl?.invalid" class="text-danger mb-2">
+            <small *ngIf="latitudeControl?.errors?.['required']">
+              Latitude must be set.
+            </small>
+
+            <small *ngIf="latitudeControl?.errors?.['min']">
+              Latitude must be greater than -90.0.
+            </small>
+
+            <small *ngIf="latitudeControl?.errors?.['max']">
+              Latitude must be smaller than 90.0.
+            </small>
+          </div>
           <small class="form-text text-muted">Latitude in decimal degrees. Negative number is south, positive
             north.</small>
         </div>
@@ -37,13 +57,25 @@
               <button (click)="d.toggle()" class="btn btn-outline-secondary bi-calendar" type="button"></button>
             </div>
           </div>
+          <div *ngIf="dateControl?.invalid" class="text-danger mb-2">
+            <small *ngIf="dateControl?.errors?.['required']">
+              Date must be set.
+            </small>
+          </div>
         </div>
         <div class="col-5 form-group">
           <label for="timeInput">Time</label>
-          <ngb-timepicker [seconds]="true" formControlName="timeControl" id="timeInput"></ngb-timepicker>
+          <ngb-timepicker [seconds]="true" formControlName="timeControl"
+                          id="timeInput"></ngb-timepicker>
+          <div *ngIf="timeControl?.invalid" class="text-danger mb-2">
+            <small *ngIf="timeControl?.errors?.['required']">
+              Time must be set.
+            </small>
+          </div>
         </div>
+
       </div>
-      <button class="btn btn-primary" name="submit">Apply</button>
+      <button [disabled]="locationForm.invalid" class="btn btn-primary" name="submit">Apply</button>
     </form>
   </div>
 </div>
