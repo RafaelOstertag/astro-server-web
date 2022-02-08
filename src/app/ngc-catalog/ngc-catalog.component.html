@@ -12,7 +12,7 @@
     <nav>
       <ngb-pagination (pageChange)="changePage($event)"
                       [boundaryLinks]="true"
-                      [collectionSize]="(totalPages * pageSize)"
+                      [collectionSize]="totalEntries"
                       [maxSize]="5"
                       [pageSize]="pageSize"
                       [page]="pageNumber" class="d-flex justify-content-center mt-1"></ngb-pagination>

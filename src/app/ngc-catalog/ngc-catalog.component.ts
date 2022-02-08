@@ -20,6 +20,7 @@ export class NgcCatalogComponent implements OnInit {
   pageNumber: number = 1
   pageSize: number = 25
   totalPages: number = 0
+  totalEntries: number = 0
 
   constructor(private readonly openNGCService: OpenNGCService) {
   }
@@ -53,6 +54,7 @@ export class NgcCatalogComponent implements OnInit {
           this.pageSize = parseInt(response.headers.get(ApiHeaders.PAGE_SIZE) ?? "25")
           this.lastPage = (response.headers.get(ApiHeaders.LAST_PAGE) ?? "false") === "true"
           this.firstPage = (response.headers.get(ApiHeaders.FIRST_PAGE) ?? "false") === "true"
+          this.totalEntries = parseInt((response.headers.get(ApiHeaders.TOTAL_ENTRIES) ?? "0"))
           this.state = CatalogListState.OK
         },
         error: (response: HttpErrorResponse) => {
@@ -83,6 +85,12 @@ export class NgcCatalogComponent implements OnInit {
       requestParameters.constellations = undefined
     } else {
       requestParameters.constellations = new Set<string>(this.currentListFilter.constellations)
+    }
+
+    if (this.currentListFilter.types.length == 0) {
+      requestParameters.types = undefined
+    } else {
+      requestParameters.types = new Set<string>(this.currentListFilter.types)
     }
     return requestParameters;
   }
