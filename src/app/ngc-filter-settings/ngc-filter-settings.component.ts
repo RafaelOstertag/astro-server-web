@@ -2,7 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ListFilter} from "../list-filter";
 import {FormControl, FormGroup} from "@angular/forms";
 import {Catalog} from "../catalog";
-import {Constellation, OpenNGCService} from "@astro-npm/astro-server-angular";
+import {Constellation, ObjectType, OpenNGCService} from "@astro-npm/astro-server-angular";
 
 @Component({
   selector: 'app-ngc-filter-settings',
@@ -15,9 +15,11 @@ export class NgcFilterSettingsComponent implements OnInit {
   filterForm = new FormGroup({
     messierControl: new FormControl(''),
     catalogControl: new FormControl(''),
-    constellationsControl: new FormControl('')
+    constellationsControl: new FormControl(''),
+    typesControl: new FormControl('')
   })
   constellations: Array<Constellation> = []
+  types: Array<ObjectType> = []
   isCollapsed = true;
 
   constructor(private readonly openNgcService: OpenNGCService) {
@@ -49,6 +51,11 @@ export class NgcFilterSettingsComponent implements OnInit {
     this.openNgcService.getConstellations('body').subscribe((constellations: Array<Constellation>) => {
       this.constellations = constellations
     })
+    this.openNgcService.getTypes('body').subscribe((types: Array<ObjectType>) => {
+      this.types = types
+    })
+
+    this.filterForm.valueChanges.subscribe(() => this.applyFilter())
   }
 
   applyFilter(): void {
@@ -61,6 +68,12 @@ export class NgcFilterSettingsComponent implements OnInit {
       filter.constellations = []
     } else {
       filter.constellations = filterSettings.constellationsControl
+    }
+
+    if (filterSettings.typesControl.includes('-- Any --')) {
+      filter.types = []
+    } else {
+      filter.types = filterSettings.typesControl
     }
     this.filterSettingsEvent.emit(filter)
   }

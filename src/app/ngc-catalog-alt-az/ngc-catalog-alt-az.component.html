@@ -1,6 +1,6 @@
 <article class="mt-1">
   <header>
-    <h2>Catalog Entries</h2>
+    <h2>NGC Catalog with Alt/Az</h2>
   </header>
 
   <aside>
@@ -15,7 +15,7 @@
     <nav>
       <ngb-pagination (pageChange)="changePage($event)" *ngIf="catalogEntries.length > 0"
                       [boundaryLinks]="true"
-                      [collectionSize]="(totalPages * pageSize)"
+                      [collectionSize]="totalEntries"
                       [maxSize]="5"
                       [pageSize]="pageSize"
                       [page]="pageNumber" class="d-flex justify-content-center mt-1"></ngb-pagination>

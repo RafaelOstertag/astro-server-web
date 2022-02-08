@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Location} from "../location";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {NgbDate, NgbDateStruct, NgbTimeStruct} from "@ng-bootstrap/ng-bootstrap";
@@ -10,13 +10,37 @@ import {LocationSettingsService} from "../location-settings.service";
   templateUrl: './ngc-location.component.html',
   styleUrls: ['./ngc-location.component.css']
 })
-export class NgcLocationComponent {
+export class NgcLocationComponent implements OnInit {
   @Output() locationSettingsEvent = new EventEmitter<Location>()
-  locationForm: FormGroup
+  locationForm: FormGroup = new FormGroup({})
 
   constructor(private readonly locationSettingsService: LocationSettingsService) {
-    const longitude = locationSettingsService.getLongitude() ?? 8.8330864
-    const latitude = locationSettingsService.getLatitude() ?? 47.5479365
+
+  }
+
+  get longitudeControl() {
+    return this.locationForm.get('longitudeControl');
+  }
+
+  get latitudeControl() {
+    return this.locationForm.get('latitudeControl');
+  }
+
+  get dateControl() {
+    return this.locationForm.get('dateControl')
+  }
+
+  get timeControl() {
+    return this.locationForm.get('timeControl')
+  }
+
+  private static getCurrentDate(): Date {
+    return new Date(Date.now());
+  }
+
+  ngOnInit(): void {
+    const longitude = this.locationSettingsService.getLongitude() ?? 8.8330864
+    const latitude = this.locationSettingsService.getLatitude() ?? 47.5479365
 
     this.locationForm = new FormGroup(
       {
@@ -32,26 +56,6 @@ export class NgcLocationComponent {
         timeControl: new FormControl(this.getCurrentNgbTimeStruct(), [Validators.required])
       }
     )
-  }
-
-  get longitudeControl() {
-    return this.locationForm.get('longitudeControl');
-  }
-
-  get latitudeControl() {
-    return this.locationForm.get('latitudeControl');
-  }
-
-  get timeControl() {
-    return this.locationForm.get('dateControl')
-  }
-
-  get dateControl() {
-    return this.locationForm.get('timeControl')
-  }
-
-  private static getCurrentDate(): Date {
-    return new Date(Date.now());
   }
 
   getCurrentNgbTimeStruct(): NgbTimeStruct {
