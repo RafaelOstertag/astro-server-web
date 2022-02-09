@@ -1,16 +1,16 @@
 <div *ngIf="ngcEntry" class="row">
-  <h5 class="col"><i *ngIf="!isExpanded" class="bi-chevron-compact-right"></i>
-    <i *ngIf="isExpanded" class="bi-chevron-compact-down"></i>
+  <h5 class="col-md"><span *ngIf="!isExpanded" class="bi-chevron-compact-right"></span>
+    <span *ngIf="isExpanded" class="bi-chevron-compact-down"></span>
     {{ ngcEntry.name }} <span *ngIf="ngcEntry.messier"
                               class="badge badge-primary">M{{ ngcEntry.messier }}</span>
-    <span *ngIf="!isObjectVisible" class="badge badge-warning"><i class="bi-arrow-down-circle"></i></span>
+    <span *ngIf="!isObjectVisible" class="badge badge-warning"><span class="bi-arrow-down-circle"></span></span>
   </h5>
-  <div class="col text-muted">{{ ngcEntry.type.description }}</div>
-  <div class="col text-muted">
-    <span *ngIf="ngcEntry.constellation?.fullname">{{ngcEntry.constellation?.fullname || ""}}</span>
+  <div class="col-md text-muted"><span class="d-md-none">Type </span>{{ ngcEntry.type.description }}</div>
+  <div class="col-md text-muted">
+    <span *ngIf="ngcEntry.constellation?.fullname"><span
+      class="d-md-none">Constellation </span>{{ngcEntry.constellation?.fullname || ""}}</span>
   </div>
-  <div class="col text-muted">
+  <div class="col-md text-muted">
     <span *ngIf="ngcEntry.commonNames">({{ngcEntry.commonNames?.join(', ')}})</span>
   </div>
-
 </div>

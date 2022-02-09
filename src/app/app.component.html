@@ -1,13 +1,17 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
   <span class="navbar-brand">{{ title }}</span>
+  <button (click)="isMenuCollapsed = !isMenuCollapsed" class="navbar-toggler" type="button">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-  <div class="collapse navbar-collapse" id="appNavbarContent">
+  <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="/ngc-catalog">NGC Catalog</a>
+        <a (click)="isMenuCollapsed = true" [routerLink]="'ngc-catalog'" class="nav-link">NGC Catalog</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/ngc-catalog-alt-az">NGC Catalog with Alt/Az</a>
+        <a (click)="isMenuCollapsed = true" [routerLink]="'ngc-catalog-alt-az'" class="nav-link">NGC Catalog with
+          Alt/Az</a>
       </li>
     </ul>
   </div>

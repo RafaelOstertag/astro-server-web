@@ -1,38 +1,206 @@
-<div *ngIf="ngcEntry" class="row">
-  <div class="col">
-    Right Ascension: {{ ngcEntry.equatorialCoordinates?.ra ?? "n/a" }}
-  </div>
-  <div class="col">
-    Declination:  {{ ngcEntry.equatorialCoordinates?.dec ?? "n/a" }}
-  </div>
-  <div *ngIf="ngcEntry.majorAxis" class="col">
-    Major Axis: {{ ngcEntry.majorAxis }}
-  </div>
-  <div *ngIf="ngcEntry.minorAxis" class="col">
-    Minor Axis: {{ ngcEntry.minorAxis }}
-  </div>
-  <div *ngIf="ngcEntry.positionAngle" class="col">
-    Position Angle: {{ ngcEntry.positionAngle }}
-  </div>
-</div>
-<div *ngIf="ngcEntry" class="row">
-  <div *ngIf="ngcEntry.bMag" class="col">
-    B-Mag: {{ ngcEntry.bMag }}
+<div *ngIf="ngcEntry">
+  <div class="row">
+    <div class="col-md-3">
+      Right Ascension:
+    </div>
+    <div class="col-md-2">
+      {{ ngcEntry.equatorialCoordinates?.ra ?? "n/a" }}
+    </div>
+    <div class="col-md-3">
+      Declination:
+    </div>
+    <div class="col-md-2">
+      {{ ngcEntry.equatorialCoordinates?.dec ?? "n/a" }}
+    </div>
   </div>
 
-  <div *ngIf="ngcEntry.vMag" class="col">
-    V-Mag: {{ ngcEntry.vMag }}
+  <div class="row pt-1">
+    <div [ngClass]="{'text-muted': !ngcEntry.majorAxis}" class="col-md-3">
+      Major Axis:
+    </div>
+    <div [ngClass]="{'text-muted': !ngcEntry.majorAxis}" class="col-md-2">
+      {{ ngcEntry.majorAxis || "n/a" }}
+    </div>
+    <div [ngClass]="{'text-muted': !ngcEntry.minorAxis}" class="col-md-3">
+      Minor Axis:
+    </div>
+    <div [ngClass]="{'text-muted': !ngcEntry.minorAxis}" class="col-md-2">
+      {{ ngcEntry.minorAxis || "n/a" }}
+    </div>
   </div>
 
-  <div *ngIf="ngcEntry.jMag" class="col">
-    J-Mag: {{ ngcEntry.jMag }}
+  <div class="row pt-1">
+    <div [ngClass]="{'text-muted': !ngcEntry.positionAngle}" class="col-md-3">
+      Position Angle:
+    </div>
+    <div [ngClass]="{'text-muted': !ngcEntry.positionAngle}" class="col-md-2">
+      {{ ngcEntry.positionAngle || "n/a" }}
+    </div>
   </div>
 
-  <div *ngIf="ngcEntry.hMag" class="col">
-    H-Mag: {{ ngcEntry.hMag }}
+  <div class="row pt-1">
+    <div [ngClass]="{'text-muted': !ngcEntry.bMag}" class="col-md-1">
+      B-Mag:
+    </div>
+    <div [ngClass]="{'text-muted': !ngcEntry.bMag}" class="col-md-1">
+      {{ ngcEntry.bMag || "n/a" }}
+    </div>
+
+    <div [ngClass]="{'text-muted': !ngcEntry.vMag}" class="col-md-1">
+      V-Mag:
+    </div>
+    <div [ngClass]="{'text-muted': !ngcEntry.vMag}" class="col-md-1">
+      {{ ngcEntry.vMag || "n/a" }}
+    </div>
+
+    <div [ngClass]="{'text-muted': !ngcEntry.jMag}" class="col-md-1">
+      J-Mag:
+    </div>
+    <div [ngClass]="{'text-muted': !ngcEntry.jMag}" class="col-md-1">
+      {{ ngcEntry.jMag || "n/a" }}
+    </div>
+
+    <div [ngClass]="{'text-muted': !ngcEntry.hMag}" class="col-md-1">
+      H-Mag:
+    </div>
+    <div [ngClass]="{'text-muted': !ngcEntry.hMag}" class="col-md-1">
+      {{ ngcEntry.hMag || "n/a" }}
+    </div>
+
+    <div [ngClass]="{'text-muted': !ngcEntry.kMag}" class="col-md-1">
+      K-Mag:
+    </div>
+    <div [ngClass]="{'text-muted': !ngcEntry.kMag}" class="col-md-1">
+      {{ ngcEntry.kMag || "n/a" }}
+    </div>
   </div>
 
-  <div *ngIf="ngcEntry.kMag" class="col">
-    K-Mag: {{ ngcEntry.kMag }}
+  <div class="row pt-1">
+    <div [ngClass]="{'text-muted': !ngcEntry.surfaceBrightness}" class="col-md-4">
+      Surface Brightness:
+    </div>
+    <div [ngClass]="{'text-muted': !ngcEntry.surfaceBrightness}" class="col-md-2">
+      {{ ngcEntry.surfaceBrightness || "n/a" }}
+    </div>
+    <div [ngClass]="{'text-muted': !ngcEntry.hubble}" class="col-md-3">
+      Hubble
+    </div>
+    <div [ngClass]="{'text-muted': !ngcEntry.hubble}" class="col-md-2">
+      {{ ngcEntry.hubble || "n/a" }}
+    </div>
+  </div>
+
+  <div class="row pt-1">
+    <div [ngClass]="{'text-muted': !ngcEntry.parallax}" class="col-md-3">
+      Parallax
+    </div>
+    <div [ngClass]="{'text-muted': !ngcEntry.parallax}" class="col-md-2">
+      {{ ngcEntry.parallax || "n/a" }}
+    </div>
+  </div>
+
+  <div class="row pt-1">
+    <div [ngClass]="{'text-muted': !ngcEntry.properMotionRA}" class="col-md-4">
+      Proper Motion RA
+    </div>
+    <div [ngClass]="{'text-muted': !ngcEntry.properMotionRA}" class="col-md-2">
+      {{ ngcEntry.properMotionRA || "n/a" }}
+    </div>
+    <div [ngClass]="{'text-muted': !ngcEntry.properMotionDec}" class="col-md-4">
+      Proper Motion Dec
+    </div>
+    <div [ngClass]="{'text-muted': !ngcEntry.properMotionDec}" class="col-md-2">
+      {{ ngcEntry.properMotionDec || "n/a" }}
+    </div>
+  </div>
+
+  <div class="row pt-1">
+    <div [ngClass]="{'text-muted': !ngcEntry.radialVelocity}" class="col-md-4">
+      Radial Velocity:
+    </div>
+    <div [ngClass]="{'text-muted': !ngcEntry.radialVelocity}" class="col-md-2">
+      {{ ngcEntry.radialVelocity || "n/a" }}
+    </div>
+    <div [ngClass]="{'text-muted': !ngcEntry.redshift}" class="col-md-4">
+      Redshift
+    </div>
+    <div [ngClass]="{'text-muted': !ngcEntry.redshift}" class="col-md-2">
+      {{ ngcEntry.redshift || "n/a" }}
+    </div>
+  </div>
+
+  <div class="row pt-1">
+    <div [ngClass]="{'text-muted': !ngcEntry.cstarUMag}" class="col-md-2">
+      Cstar U-Mag:
+    </div>
+    <div [ngClass]="{'text-muted': !ngcEntry.cstarUMag}" class="col-md-2">
+      {{ ngcEntry.cstarUMag || "n/a" }}
+    </div>
+
+    <div [ngClass]="{'text-muted': !ngcEntry.cstarBMag}" class="col-md-2">
+      Cstar B-Mag:
+    </div>
+    <div [ngClass]="{'text-muted': !ngcEntry.cstarBMag}" class="col-md-2">
+      {{ ngcEntry.cstarBMag || "n/a" }}
+    </div>
+
+    <div [ngClass]="{'text-muted': !ngcEntry.cstarVMag}" class="col-md-2">
+      Cstar V-Mag:
+    </div>
+    <div [ngClass]="{'text-muted': !ngcEntry.cstarVMag}" class="col-md-2">
+      {{ ngcEntry.cstarVMag || "n/a" }}
+    </div>
+  </div>
+
+  <div class="row pt-1">
+    <div [ngClass]="{'text-muted': !ngcEntry.ngc}" class="col-md-2">
+      NGC:
+    </div>
+    <div [ngClass]="{'text-muted': !ngcEntry.ngc}" class="col-md-3">
+      {{ ngcEntry.ngc || "none" }}
+    </div>
+
+    <div [ngClass]="{'text-muted': !ngcEntry.ic}" class="col-md-2">
+      IC:
+    </div>
+    <div [ngClass]="{'text-muted': !ngcEntry.ic}" class="col-md-3">
+      {{ ngcEntry.ic || "none" }}
+    </div>
+  </div>
+
+  <div class="row pt-1">
+    <div [ngClass]="{'text-muted': !ngcEntry.cstarNames}" class="col-md-4">
+      Cstar Names:
+    </div>
+    <div [ngClass]="{'text-muted': !ngcEntry.cstarNames}" class="col-md-8">
+      {{ ngcEntry.cstarNames?.join(', ') || "n/a" }}
+    </div>
+  </div>
+
+  <div *ngIf="ngcEntry.identifiers" class="row pt-1">
+    <div class="col-md-3">
+      Identifiers:
+    </div>
+    <div class="col-md-9">
+      {{ ngcEntry.identifiers?.join(', ') }}
+    </div>
+  </div>
+
+  <div *ngIf="ngcEntry.nedNotes" class="row pt-1">
+    <div class="col-md-3">
+      NED notes:
+    </div>
+    <div class="col-md-9">
+      {{ ngcEntry.nedNotes }}
+    </div>
+  </div>
+
+  <div *ngIf="ngcEntry.openNGCNotes" class="row pt-1">
+    <div class="col-md-3">
+      OpenNGC notes:
+    </div>
+    <div class="col-md-9">
+      {{ ngcEntry.openNGCNotes }}
+    </div>
   </div>
 </div>

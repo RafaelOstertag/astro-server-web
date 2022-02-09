@@ -1,8 +1,14 @@
 <div *ngIf="horizontalCoordinates" class="row">
-  <div class="col">
-    Altitude: {{ horizontalCoordinates.alt }}
+  <div class="col-md-3">
+    Altitude:
   </div>
-  <div class="col">
-    Azimuth:  {{ horizontalCoordinates.az }}
+  <div class="col-md-2">
+    {{ horizontalCoordinates.alt }}
+  </div>
+  <div class="col-md-3">
+    Azimuth:
+  </div>
+  <div class="col-md-2">
+    {{ horizontalCoordinates.az }}
   </div>
 </div>

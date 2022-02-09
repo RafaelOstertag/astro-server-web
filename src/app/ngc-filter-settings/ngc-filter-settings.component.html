@@ -11,7 +11,7 @@
     <h3 class="card-title">Filter Settings</h3>
     <form (ngSubmit)="applyFilter()" [formGroup]="filterForm" class="card-text">
       <div class="row">
-        <fieldset class="col">
+        <fieldset class="col-md">
           <legend class="h6">Messier</legend>
           <div class="form-group">
             <div class="form-check form-check-inline">
@@ -35,7 +35,7 @@
             </div>
           </div>
         </fieldset>
-        <fieldset class="col">
+        <fieldset class="col-md">
           <legend class="h6">Catalog</legend>
           <div class="form-group">
             <div class="form-check form-check-inline">
@@ -59,7 +59,7 @@
             </div>
           </div>
         </fieldset>
-        <div class="form-group col">
+        <div class="form-group col-md">
           <label for="filterSettingsConstellations">Only show objects in these constellations</label>
           <select class="form-control" formControlName="constellationsControl" id="filterSettingsConstellations"
                   multiple>
@@ -68,7 +68,7 @@
                     [ngValue]="constellation.abbrev">{{ constellation.fullname }}</option>
           </select>
         </div>
-        <div class="form-group col">
+        <div class="form-group col-md">
           <label for="filterSettingsTypes">Only show objects of these types</label>
           <select class="form-control" formControlName="typesControl" id="filterSettingsTypes"
                   multiple>

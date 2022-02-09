@@ -4,11 +4,13 @@
   </header>
 
   <aside>
+    <!-- Location settings -->
     <app-ngc-location (locationSettingsEvent)="applyLocation($event)"></app-ngc-location>
 
+    <!-- Filter settings -->
     <app-ngc-filter-settings (filterSettingsEvent)="applyFilters($event)"></app-ngc-filter-settings>
   </aside>
-
+  <!-- Shown if list could be loaded -->
   <main *ngIf="state === 0 && catalogEntries.length > 0" class="mt-4">
     <app-ngc-entry-alt-az *ngFor="let entryWithHorizontalCoordinates of catalogEntries"
                           [ngcEntryWithHorizontalCoordinates]="entryWithHorizontalCoordinates"></app-ngc-entry-alt-az>
@@ -22,17 +24,19 @@
     </nav>
   </main>
 
-  <div *ngIf="state ===0 && catalogEntries.length === 0" class="jumbotron">
+  <!-- No location selected (-> catalogEntries empty) -->
+  <div *ngIf="state === 0 && catalogEntries.length === 0" class="jumbotron">
     <h1>Set Location</h1>
     <p>Please set the location above.</p>
   </div>
 
-
+  <!-- Filter did not yield result -->
   <div *ngIf="state === 1" class="jumbotron">
     <h1>No Entries Found</h1>
     <p>Your filter settings did not yield a result.</p>
   </div>
 
+  <!-- Other errors than 404 -->
   <div *ngIf="state === 2" class="jumbotron">
     <h1>Something went wrong</h1>
     <p>Check back later.</p>
