@@ -33,6 +33,7 @@
                      value="false">
               <label class="form-check-label" for="filterSettingMessierIgnore">No</label>
             </div>
+            <small class="form-text text-muted">Filter by Messier or non-Messier objects.</small>
           </div>
         </fieldset>
         <fieldset class="col-md">
@@ -57,25 +58,45 @@
                      value="ic">
               <label class="form-check-label" for="filterSettingsCatalogIc">IC</label>
             </div>
+            <small class="form-text text-muted">Select between <em>New General Catalogue of Nebulae and Clusters of
+              Stars</em> (NGC) and <em>Index Catalogues</em> (IC), or both.</small>
           </div>
         </fieldset>
         <div class="form-group col-md">
-          <label for="filterSettingsConstellations">Only show objects in these constellations</label>
+          <label for="filterSettingsConstellations">Constellations</label>
           <select class="form-control" formControlName="constellationsControl" id="filterSettingsConstellations"
                   multiple>
             <option [ngValue]="">-- Any --</option>
             <option *ngFor="let constellation of constellations"
                     [ngValue]="constellation.abbrev">{{ constellation.fullname }}</option>
           </select>
+          <small class="form-text text-muted">Only show objects in these constellations.</small>
         </div>
         <div class="form-group col-md">
-          <label for="filterSettingsTypes">Only show objects of these types</label>
+          <label for="filterSettingsTypes">Object Types</label>
           <select class="form-control" formControlName="typesControl" id="filterSettingsTypes"
                   multiple>
             <option [ngValue]="">-- Any --</option>
             <option *ngFor="let type of types"
                     [ngValue]="type.abbrev">{{ type.description }}</option>
           </select>
+          <small class="form-text text-muted">Only show objects of these types.</small>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md">
+          <label for="minVMagInput">Minimum V-Mag</label>
+          <input class="form-control" formControlName="minVMagControl"
+                 id="minVMagInput"
+                 name="minVMagControl" step="0.1" type="number">
+          <small class="form-text text-muted">Minimum V-Magnitude. Leave empty to not filter.</small>
+        </div>
+        <div class="form-group col-md">
+          <label for="maxVMagInput">Maximum V-Mag</label>
+          <input class="form-control" formControlName="maxVMagControl"
+                 id="maxVMagInput"
+                 name="maxVMagControl" step="0.1" type="number">
+          <small class="form-text text-muted">Maximum V-Magnitude. Leave empty to not filer.</small>
         </div>
       </div>
     </form>

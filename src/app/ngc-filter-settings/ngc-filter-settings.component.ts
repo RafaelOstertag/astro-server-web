@@ -16,7 +16,9 @@ export class NgcFilterSettingsComponent implements OnInit {
     messierControl: new FormControl(''),
     catalogControl: new FormControl(''),
     constellationsControl: new FormControl(''),
-    typesControl: new FormControl('')
+    typesControl: new FormControl(''),
+    minVMagControl: new FormControl(''),
+    maxVMagControl: new FormControl('')
   })
   constellations: Array<Constellation> = []
   types: Array<ObjectType> = []
@@ -64,6 +66,8 @@ export class NgcFilterSettingsComponent implements OnInit {
     const filter = new ListFilter()
     filter.messier = NgcFilterSettingsComponent.getMessierValue(filterSettings.messierControl)
     filter.catalog = NgcFilterSettingsComponent.getCatalogValue(filterSettings.catalogControl)
+    filter.minVMag = filterSettings.minVMagControl
+    filter.maxVMag = filterSettings.maxVMagControl
     if (filterSettings.constellationsControl.includes('-- Any --')) {
       filter.constellations = []
     } else {

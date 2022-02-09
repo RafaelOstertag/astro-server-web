@@ -77,6 +77,14 @@ export class NgcCatalogComponent implements OnInit {
       requestParameters.catalog = this.currentListFilter.catalog
     }
 
+    if (this.currentListFilter.minVMag) {
+      requestParameters.vMagMin = this.currentListFilter.minVMag
+    }
+
+    if (this.currentListFilter.maxVMag) {
+      requestParameters.vMagMax = this.currentListFilter.maxVMag
+    }
+
     if (this.currentListFilter.messier) {
       requestParameters.messier = this.currentListFilter.messier
     }

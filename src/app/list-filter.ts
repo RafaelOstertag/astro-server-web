@@ -5,4 +5,6 @@ export class ListFilter {
   catalog?: Catalog
   constellations: Array<string> = []
   types: Array<string> = []
+  minVMag?: number
+  maxVMag?: number
 }
