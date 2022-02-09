@@ -3,6 +3,7 @@ import {ListFilter} from "../list-filter";
 import {FormControl, FormGroup} from "@angular/forms";
 import {Catalog} from "../catalog";
 import {Constellation, ObjectType, OpenNGCService} from "@astro-npm/astro-server-angular";
+import {debounceTime} from "rxjs";
 
 @Component({
   selector: 'app-ngc-filter-settings',
@@ -57,7 +58,7 @@ export class NgcFilterSettingsComponent implements OnInit {
       this.types = types
     })
 
-    this.filterForm.valueChanges.subscribe(() => this.applyFilter())
+    this.filterForm.valueChanges.pipe(debounceTime(500)).subscribe(() => this.applyFilter())
   }
 
   applyFilter(): void {
