@@ -3,9 +3,11 @@
     <h2>NGC Catalog</h2>
   </header>
 
+  <!-- Filter settings -->
   <aside>
     <app-ngc-filter-settings (filterSettingsEvent)="applyFilters($event)"></app-ngc-filter-settings>
   </aside>
+  <!-- Shown if list could be loaded -->
   <main *ngIf="state === 0" class="mt-4">
     <app-ngc-entry *ngFor="let entry of catalogEntries" [ngcEntry]="entry"></app-ngc-entry>
 
@@ -18,11 +20,13 @@
                       [page]="pageNumber" class="d-flex justify-content-center mt-1"></ngb-pagination>
     </nav>
   </main>
+  <!-- Filter did not yield result -->
   <div *ngIf="state === 1" class="jumbotron">
     <h1>No Entries Found</h1>
     <p>Your filter settings did not yield a result.</p>
   </div>
 
+  <!-- Other errors than 404 -->
   <div *ngIf="state === 2" class="jumbotron">
     <h1>Something went wrong</h1>
     <p>Check back later.</p>
