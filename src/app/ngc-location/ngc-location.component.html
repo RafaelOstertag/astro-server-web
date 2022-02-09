@@ -3,7 +3,7 @@
     <h3 class="card-title">Location</h3>
     <form (ngSubmit)="applyLocation()" [formGroup]="locationForm" class="card-text">
       <div class="row">
-        <div class="col-2 form-group">
+        <div class="col-md-2 form-group">
           <label for="longitudeInput">Longitude</label>
           <input class="form-control" formControlName="longitudeControl"
                  id="longitudeInput"
@@ -25,7 +25,7 @@
             east.</small>
         </div>
 
-        <div class="col-2 form-group">
+        <div class="col-md-2 form-group">
           <label for="latitudeInput">Latitude</label>
           <input class="form-control" formControlName="latitudeControl"
                  id="latitudeInput"
@@ -47,7 +47,7 @@
             north.</small>
         </div>
 
-        <div class="col-3 form-group">
+        <div class="col-md-3 form-group">
           <label for="dateInput">Date</label>
           <div class="input-group">
             <input #d="ngbDatepicker"
@@ -63,7 +63,7 @@
             </small>
           </div>
         </div>
-        <div class="col-5 form-group">
+        <div class="col-md-5 form-group">
           <label for="timeInput">Time</label>
           <ngb-timepicker [seconds]="true" formControlName="timeControl"
                           id="timeInput"></ngb-timepicker>
