@@ -2,7 +2,7 @@
   <app-ngc-entry-title [isExpanded]="!isCollapsed"
                        [isObjectVisible]="ngcEntryWithHorizontalCoordinates.horizontalCoordinates.altDec>0.0"
                        [ngcEntry]="ngcEntryWithHorizontalCoordinates.entry"></app-ngc-entry-title>
-  <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed" class="pb-2">
+  <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed" class="pb-1">
     <app-ngc-horizontal-coordinates
       [horizontalCoordinates]="ngcEntryWithHorizontalCoordinates.horizontalCoordinates"></app-ngc-horizontal-coordinates>
     <app-ngc-entry-detail [ngcEntry]="ngcEntryWithHorizontalCoordinates.entry"></app-ngc-entry-detail>

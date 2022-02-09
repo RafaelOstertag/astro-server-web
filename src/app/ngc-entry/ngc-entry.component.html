@@ -1,6 +1,6 @@
 <section (click)="collapse.toggle()" *ngIf="ngcEntry" class="expandable">
   <app-ngc-entry-title [isExpanded]="!isCollapsed" [ngcEntry]="ngcEntry"></app-ngc-entry-title>
-  <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed" class="pb-2">
+  <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed" class="pb-1">
     <app-ngc-entry-detail [ngcEntry]="ngcEntry"></app-ngc-entry-detail>
   </div>
 </section>
