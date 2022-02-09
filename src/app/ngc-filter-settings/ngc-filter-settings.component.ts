@@ -3,6 +3,7 @@ import {ListFilter} from "../list-filter";
 import {FormControl, FormGroup} from "@angular/forms";
 import {Catalog} from "../catalog";
 import {Constellation, ObjectType, OpenNGCService} from "@astro-npm/astro-server-angular";
+import {debounceTime} from "rxjs";
 
 @Component({
   selector: 'app-ngc-filter-settings',
@@ -16,7 +17,9 @@ export class NgcFilterSettingsComponent implements OnInit {
     messierControl: new FormControl(''),
     catalogControl: new FormControl(''),
     constellationsControl: new FormControl(''),
-    typesControl: new FormControl('')
+    typesControl: new FormControl(''),
+    minVMagControl: new FormControl(''),
+    maxVMagControl: new FormControl('')
   })
   constellations: Array<Constellation> = []
   types: Array<ObjectType> = []
@@ -55,7 +58,7 @@ export class NgcFilterSettingsComponent implements OnInit {
       this.types = types
     })
 
-    this.filterForm.valueChanges.subscribe(() => this.applyFilter())
+    this.filterForm.valueChanges.pipe(debounceTime(500)).subscribe(() => this.applyFilter())
   }
 
   applyFilter(): void {
@@ -64,6 +67,8 @@ export class NgcFilterSettingsComponent implements OnInit {
     const filter = new ListFilter()
     filter.messier = NgcFilterSettingsComponent.getMessierValue(filterSettings.messierControl)
     filter.catalog = NgcFilterSettingsComponent.getCatalogValue(filterSettings.catalogControl)
+    filter.minVMag = filterSettings.minVMagControl
+    filter.maxVMag = filterSettings.maxVMagControl
     if (filterSettings.constellationsControl.includes('-- Any --')) {
       filter.constellations = []
     } else {
