@@ -22,13 +22,13 @@
   </main>
   <!-- Filter did not yield result -->
   <div *ngIf="state === 1" class="jumbotron">
-    <h1>No Entries Found</h1>
+    <h3>No Entries Found</h3>
     <p>Your filter settings did not yield a result.</p>
   </div>
 
   <!-- Other errors than 404 -->
   <div *ngIf="state === 2" class="jumbotron">
-    <h1>Something went wrong</h1>
+    <h3>Something went wrong</h3>
     <p>Check back later.</p>
   </div>
 </article>

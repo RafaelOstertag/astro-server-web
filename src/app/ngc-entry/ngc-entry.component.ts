@@ -8,7 +8,7 @@ import {NGCEntry} from "@astro-npm/astro-server-angular";
 })
 export class NgcEntryComponent {
   @Input() ngcEntry?: NGCEntry
-  isCollapsed: boolean = true
+  @Input() isCollapsed: boolean = true
 
   constructor() {
     // intentionally empty

@@ -17,6 +17,8 @@ import {NgcHorizontalCoordinatesComponent} from './ngc-horizontal-coordinates/ng
 import {NgcEntryTitleComponent} from './ngc-entry-title/ngc-entry-title.component';
 import {NgcEntryAltAzComponent} from './ngc-entry-alt-az/ngc-entry-alt-az.component';
 import {environment} from "../environments/environment";
+import {NgcObjectSearchComponent} from './ngc-object-search/ngc-object-search.component';
+import {NgcObjectSearchFormComponent} from './ngc-object-search-form/ngc-object-search-form.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import {environment} from "../environments/environment";
     NgcEntryComponent,
     NgcHorizontalCoordinatesComponent,
     NgcEntryTitleComponent,
-    NgcEntryAltAzComponent
+    NgcEntryAltAzComponent,
+    NgcObjectSearchComponent,
+    NgcObjectSearchFormComponent
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,7 @@ import {
   NGCEntryWithHorizontalCoordinates,
   OpenNGCService
 } from "@astro-npm/astro-server-angular";
-import {CatalogListState} from "../catalog-list-state";
+import {ResponseState} from "../response-state";
 import {ListFilter} from "../list-filter";
 import {Location} from "../location";
 import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
@@ -18,7 +18,7 @@ import {formatDate} from "@angular/common";
 })
 export class NgcCatalogAltAzComponent {
   catalogEntries: Array<NGCEntryWithHorizontalCoordinates> = []
-  state: CatalogListState = CatalogListState.OK
+  state: ResponseState = ResponseState.OK
   currentListFilter: ListFilter = new ListFilter()
   currentLocation?: Location
   firstPage: boolean = true
@@ -61,29 +61,33 @@ export class NgcCatalogAltAzComponent {
 
     this.openNGCService.listObjectsExtended(requestParameters, "response")
       .subscribe({
-        next: (response: HttpResponse<Array<NGCEntryWithHorizontalCoordinates>>) => {
-          if (response.body) {
-            this.catalogEntries = response.body
-          }
-          this.totalPages = parseInt(response.headers.get(ApiHeaders.TOTAL_PAGES) ?? "0")
-          this.pageNumber = parseInt(response.headers.get(ApiHeaders.PAGE_INDEX) ?? "0") + 1
-          this.pageSize = parseInt(response.headers.get(ApiHeaders.PAGE_SIZE) ?? "25")
-          this.lastPage = (response.headers.get(ApiHeaders.LAST_PAGE) ?? "false") === "true"
-          this.firstPage = (response.headers.get(ApiHeaders.FIRST_PAGE) ?? "false") === "true"
-          this.totalEntries = parseInt((response.headers.get(ApiHeaders.TOTAL_ENTRIES) ?? "0"))
-          this.state = CatalogListState.OK
-        },
-        error: (response: HttpErrorResponse) => {
-          if (response.status === 404) {
-            this.state = CatalogListState.NO_ENTRIES
-          } else {
-            this.state = CatalogListState.ERROR
-          }
-        }
+        next: (response: HttpResponse<Array<NGCEntryWithHorizontalCoordinates>>) => this.handleResponse(response),
+        error: (response: HttpErrorResponse) => this.handleError(response)
       })
   }
 
-  private compileRequestParameters() {
+  private handleResponse(response: HttpResponse<Array<NGCEntryWithHorizontalCoordinates>>): void {
+    if (response.body) {
+      this.catalogEntries = response.body
+    }
+    this.totalPages = parseInt(response.headers.get(ApiHeaders.TOTAL_PAGES) ?? "0")
+    this.pageNumber = parseInt(response.headers.get(ApiHeaders.PAGE_INDEX) ?? "0") + 1
+    this.pageSize = parseInt(response.headers.get(ApiHeaders.PAGE_SIZE) ?? "25")
+    this.lastPage = (response.headers.get(ApiHeaders.LAST_PAGE) ?? "false") === "true"
+    this.firstPage = (response.headers.get(ApiHeaders.FIRST_PAGE) ?? "false") === "true"
+    this.totalEntries = parseInt((response.headers.get(ApiHeaders.TOTAL_ENTRIES) ?? "0"))
+    this.state = ResponseState.OK
+  }
+
+  private handleError(response: HttpErrorResponse): void {
+    if (response.status === 404) {
+      this.state = ResponseState.NO_ENTRIES
+    } else {
+      this.state = ResponseState.ERROR
+    }
+  }
+
+  private compileRequestParameters(): ListObjectsExtendedRequestParams {
     const requestParameters: ListObjectsExtendedRequestParams = {
       longitude: this.currentLocation!.longitude,
       latitude: this.currentLocation!.latitude,

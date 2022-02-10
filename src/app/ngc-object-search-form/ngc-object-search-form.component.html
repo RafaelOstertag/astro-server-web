@@ -1,0 +1,27 @@
+<form (ngSubmit)="executeSearch()" [formGroup]="searchForm">
+  <div class="row">
+    <div class="form-group col-md">
+      <label for="searchCatalog">Catalog</label>
+      <select class="form-control" formControlName="catalogControl" id="searchCatalog">
+        <option *ngFor="let catalog of supportedCatalogs"
+                [ngValue]="catalog">{{ catalog }}</option>
+      </select>
+      <small class="form-text text-muted">The catalog to search object number in.</small>
+    </div>
+    <div class="form-group col-md">
+      <label for="numberControl">Object Number</label>
+      <input class="form-control" formControlName="numberControl"
+             id="numberControl" type="text">
+      <div *ngIf="numberControl?.invalid" class="text-danger mb-2">
+        <small *ngIf="numberControl?.errors?.['required']">
+          Number must be set.
+        </small>
+
+        <small *ngIf="numberControl?.errors?.['pattern']">
+          Only digits are allowed.
+        </small>
+      </div>
+      <small class="form-text text-muted">The number of the object in the catalog.</small>
+    </div>
+  </div>
+</form>

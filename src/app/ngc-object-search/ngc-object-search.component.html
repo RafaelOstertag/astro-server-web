@@ -1,0 +1,32 @@
+<article class="mt-1">
+  <header>
+    <h2>NGC Object Search</h2>
+  </header>
+
+  <aside>
+    <app-ngc-object-search-form (objectSearchEvent)="handleSearchEvent($event)"></app-ngc-object-search-form>
+  </aside>
+
+  <main *ngIf="state === 0 && currentEntry" class="mt-4">
+    <app-ngc-entry [isCollapsed]="false" [ngcEntry]="currentEntry"></app-ngc-entry>
+  </main>
+
+  <!-- If no search has ever been performed -->
+  <div *ngIf="state === 0 && !currentEntry" class="jumbotron">
+    <h3>Start searching</h3>
+    <p>Select the catalog and enter the object number above.</p>
+  </div>
+
+  <!-- Search did not yield result -->
+  <div *ngIf="state === 1" class="jumbotron">
+    <h3>No Entry Found</h3>
+    <p>Could not find <em>{{ currentObjectName }}</em>.</p>
+  </div>
+
+  <!-- Other errors than 404 -->
+  <div *ngIf="state === 2" class="jumbotron">
+    <h3>Something went wrong</h3>
+    <p>Check back later.</p>
+  </div>
+
+</article>
