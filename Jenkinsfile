@@ -60,7 +60,7 @@ fi
       }
     }
 
-    stage('deploy') {
+    stage('publish to repo') {
       when {
         branch "master"
         not {
@@ -74,7 +74,18 @@ fi
         withCredentials([usernameColonPassword(credentialsId: 'de85340b-c857-49e3-9983-fc959df25943', variable: 'CREDENTIALS')]) {
           sh 'curl -k -u "$CREDENTIALS" --upload-file astro-server-web-${VERSION}.tar.gz "${NEXUS}${REPOSITORY}/${VERSION}/"'
         }
+      }
+    }
 
+    stage('deploy') {
+      when {
+        branch "master"
+        not {
+          triggeredBy "TimerTrigger"
+        }
+      }
+
+      steps {
         script {
           def version = env.VERSION
           step([$class                 : "RundeckNotifier",
@@ -89,7 +100,6 @@ fi
       }
     }
   }
-
 
   post {
     unsuccessful {
