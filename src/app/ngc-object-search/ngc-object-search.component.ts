@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {GetObjectRequestParams, NGCEntry, OpenNGCService} from "@astro-npm/astro-server-angular";
+import {GetObjectRequestParams, NGCEntry, OpenNGCService} from "@rafaelostertag/astro-server-angular";
 import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
 import {ResponseState} from "../response-state";
 

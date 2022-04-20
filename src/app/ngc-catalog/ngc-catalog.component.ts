@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ListObjectsRequestParams, NGCEntry, OpenNGCService} from '@astro-npm/astro-server-angular';
+import {ListObjectsRequestParams, NGCEntry, OpenNGCService} from '@rafaelostertag/astro-server-angular';
 import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
 import {ApiHeaders} from "../api-headers";
 import {ListFilter} from "../list-filter";
