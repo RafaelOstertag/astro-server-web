@@ -6,7 +6,7 @@ only-master: &onlymaster
       - master
 
 orbs:
-  c: rafaelostertag/common-orb@1.8.0
+  c: rafaelostertag/common-orb@1.8.1
 
 jobs:
   check-version:
