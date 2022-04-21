@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {NGCEntry} from "@astro-npm/astro-server-angular";
+import {NGCEntry} from "@rafaelostertag/astro-server-angular";
 
 @Component({
   selector: 'app-ngc-entry-detail',

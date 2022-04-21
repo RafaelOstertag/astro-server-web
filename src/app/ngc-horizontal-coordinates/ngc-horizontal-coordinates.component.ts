@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {HorizontalCoordinates} from "@astro-npm/astro-server-angular";
+import {HorizontalCoordinates} from "@rafaelostertag/astro-server-angular";
 
 @Component({
   selector: 'app-ngc-horizontal-coordinates',

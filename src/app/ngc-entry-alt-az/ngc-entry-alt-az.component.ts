@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {NGCEntryWithHorizontalCoordinates} from "@astro-npm/astro-server-angular";
+import {NGCEntryWithHorizontalCoordinates} from "@rafaelostertag/astro-server-angular";
 
 @Component({
   selector: 'app-ngc-entry-alt-az',

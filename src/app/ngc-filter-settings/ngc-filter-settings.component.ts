@@ -2,7 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ListFilter} from "../list-filter";
 import {FormControl, FormGroup} from "@angular/forms";
 import {Catalog} from "../catalog";
-import {Constellation, ObjectType, OpenNGCService} from "@astro-npm/astro-server-angular";
+import {Constellation, ObjectType, OpenNGCService} from "@rafaelostertag/astro-server-angular";
 import {debounceTime} from "rxjs";
 
 @Component({

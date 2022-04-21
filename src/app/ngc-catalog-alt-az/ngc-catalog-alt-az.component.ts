@@ -3,7 +3,7 @@ import {
   ListObjectsExtendedRequestParams,
   NGCEntryWithHorizontalCoordinates,
   OpenNGCService
-} from "@astro-npm/astro-server-angular";
+} from "@rafaelostertag/astro-server-angular";
 import {ResponseState} from "../response-state";
 import {ListFilter} from "../list-filter";
 import {Location} from "../location";
