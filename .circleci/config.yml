@@ -48,7 +48,7 @@ jobs:
           name: Trigger rundeck
           command: |
             VERSION=$(jq -r .version package.json)
-            curl -f -H "X-Rundeck-Auth-Token: ${RUNDECK_API_TOKEN}' \
+            curl -f -H "X-Rundeck-Auth-Token: ${RUNDECK_API_TOKEN}" \
               -H 'Content-Type: application/json' \
               -d "{ \"options\" : { \"version\": \"${VERSION}\" }}"
               -X POST https://colossus.kruemel.home/rundeck/api/18/job/f32a7d62-b42e-4fbb-83df-ccd51c98f810/executions
